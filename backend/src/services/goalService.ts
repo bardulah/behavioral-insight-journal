@@ -1,5 +1,5 @@
 import { db } from '../database/schema';
-import { Goal } from '../types';
+import type { Goal } from '@growth-journal/types';
 
 export class GoalService {
   static getAll(): Goal[] {

@@ -1,5 +1,5 @@
 import { db } from '../database/schema';
-import { JournalEntry } from '../types';
+import type { JournalEntry } from '@growth-journal/types';
 
 export class JournalService {
   static getAll(): JournalEntry[] {
@@ -117,7 +117,7 @@ export class JournalService {
     const recentStreak = this.getJournalingStreak();
 
     return {
-      ...stats,
+      ...(stats || {}),
       current_streak: recentStreak
     };
   }

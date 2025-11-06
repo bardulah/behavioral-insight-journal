@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api/client';
-import { Sparkles, RefreshCw, Eye, Trash2, Target, TrendingUp } from 'lucide-react';
+import { Sparkles, RefreshCw, Eye, Trash2, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Insights() {

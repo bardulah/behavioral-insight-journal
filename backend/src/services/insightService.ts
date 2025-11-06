@@ -1,5 +1,5 @@
 import { db } from '../database/schema';
-import { Insight } from '../types';
+import type { Insight } from '@growth-journal/types';
 import { JournalService } from './journalService';
 import { GoalService } from './goalService';
 import { HabitService } from './habitService';

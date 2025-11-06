@@ -1,5 +1,5 @@
 import { db } from '../database/schema';
-import { GitCommit } from '../types';
+import type { GitCommit } from '@growth-journal/types';
 import simpleGit from 'simple-git';
 import fs from 'fs';
 
@@ -23,7 +23,6 @@ export class GitService {
 
     const log = await git.log({
       '--since': since.toISOString(),
-      '--all': true
     });
 
     const importedCommits: GitCommit[] = [];
@@ -109,7 +108,7 @@ export class GitService {
     `).all();
 
     return {
-      ...stats,
+      ...(stats || {}),
       recent_activity: recentActivity
     };
   }

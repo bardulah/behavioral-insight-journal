@@ -45,10 +45,13 @@ router.get('/:id', (req: Request, res: Response) => {
 
 router.post('/', (req: Request, res: Response) => {
   try {
+    console.log('POST /journals - Request body:', req.body);
     const entry = JournalService.create(req.body);
+    console.log('POST /journals - Entry created:', entry);
     res.status(201).json(entry);
   } catch (error: any) {
-    res.status(400).json({ error: error.message });
+    console.error('POST /journals - Error:', error);
+    res.status(400).json({ error: error.message || 'Failed to create journal entry' });
   }
 });
 

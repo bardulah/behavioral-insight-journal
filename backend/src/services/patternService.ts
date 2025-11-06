@@ -1,5 +1,5 @@
 import { db } from '../database/schema';
-import { Pattern } from '../types';
+import type { Pattern } from '@growth-journal/types';
 import { JournalService } from './journalService';
 import natural from 'natural';
 

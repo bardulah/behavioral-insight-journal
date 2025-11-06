@@ -1,5 +1,5 @@
 import { db } from '../database/schema';
-import { Habit, HabitLog } from '../types';
+import type { Habit, HabitLog } from '@growth-journal/types';
 
 export class HabitService {
   static getAll(): Habit[] {

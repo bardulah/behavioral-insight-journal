@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import {
   BookOpen, Target, TrendingUp, Sparkles,
-  BarChart3, GitBranch, Home, Moon, Sun, Trophy
+  BarChart3, GitBranch, Home, Moon, Sun
 } from 'lucide-react';
 import { queryClient } from './lib/queryClient';
 import { useThemeStore } from './stores/themeStore';
@@ -53,7 +53,7 @@ function App() {
 }
 
 function AppContent() {
-  const { theme, setTheme, resolvedTheme } = useThemeStore();
+  const { setTheme, resolvedTheme } = useThemeStore();
 
   return (
     <div className="min-h-screen flex bg-gray-50 dark:bg-gray-900">

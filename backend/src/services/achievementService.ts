@@ -221,16 +221,18 @@ export class AchievementService {
       const req = achievement.requirement_data;
       const target = achievement.target || 100;
 
+      if (!req || !req.action) continue;
+
       switch (req.action) {
         case 'first_journal':
         case 'journal_count':
           progress = journalStats.total_entries;
-          shouldUnlock = progress >= req.target;
+          shouldUnlock = progress >= (req.target || 1);
           break;
 
         case 'journal_streak':
           progress = journalStats.current_streak;
-          shouldUnlock = progress >= req.target;
+          shouldUnlock = progress >= (req.target || 1);
           break;
 
         case 'first_goal':
@@ -239,8 +241,8 @@ export class AchievementService {
           break;
 
         case 'complete_goal':
-          progress = goalStats.completed_goals;
-          shouldUnlock = progress >= req.target;
+          progress = goalStats.completed_goals || 0;
+          shouldUnlock = progress >= (req.target || 1);
           break;
 
         case 'first_habit':
@@ -258,7 +260,7 @@ export class AchievementService {
             'SELECT COUNT(*) as count FROM journal_entries WHERE mood IS NOT NULL'
           ).get() as any;
           progress = moodEntries.count;
-          shouldUnlock = progress >= req.target;
+          shouldUnlock = progress >= (req.target || 1);
           break;
 
         case 'early_journal':
@@ -267,7 +269,7 @@ export class AchievementService {
             WHERE CAST(strftime('%H', created_at) AS INTEGER) < 8
           `).get() as any;
           progress = earlyEntries.count;
-          shouldUnlock = progress >= req.target;
+          shouldUnlock = progress >= (req.target || 1);
           break;
       }
 
