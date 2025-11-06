@@ -105,4 +105,32 @@ export const api = {
       body: JSON.stringify({ repoPath, days }),
     }),
   },
+
+  // Achievement endpoints
+  achievements: {
+    getAll: () => request<any[]>('/achievements'),
+    getUnlocked: () => request<any[]>('/achievements/unlocked'),
+    getLocked: () => request<any[]>('/achievements/locked'),
+    getStats: () => request<any>('/achievements/stats'),
+    check: () => request<any>('/achievements/check', { method: 'POST' }),
+  },
+
+  // Export endpoints
+  export: {
+    data: (options: any) => request<string>('/export', {
+      method: 'POST',
+      body: JSON.stringify(options),
+    }),
+  },
+
+  // Search endpoints
+  search: {
+    journals: (query: string, limit?: number) =>
+      request<any>(`/search?q=${encodeURIComponent(query)}&limit=${limit || 20}`),
+    filter: (filter: any) => request<any[]>('/search/filter', {
+      method: 'POST',
+      body: JSON.stringify(filter),
+    }),
+    getTags: () => request<string[]>('/search/tags'),
+  },
 };
