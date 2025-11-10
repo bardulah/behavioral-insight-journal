@@ -24,9 +24,9 @@ This is a full-stack web application designed as a personal growth and journalin
 
 ### Key Files
 *   `INSTRUCTIONS.md`: User-facing guide on how to use the application.
+*   `AGENTS.md`: This file.
+*   `backend/.env`: **Contains the environment configuration for the backend.**
 *   `package.json`: (Root) Defines the monorepo workspaces (`frontend`, `backend`).
-*   `backend/src/server.ts`: The main entry point for the backend API.
-*   `frontend/src/App.tsx`: The main component for the React frontend.
 
 ---
 
@@ -47,12 +47,13 @@ This section outlines potential future enhancements for the project.
 ### How to Work on This Project
 
 *   **Running Locally**: This is a monorepo. To run it for development, navigate to the project root and run `npm install`, followed by `npm run dev`. This will start both the backend and frontend development servers concurrently.
-*   **Deployment**: The application is deployed automatically by Vercel when changes are pushed to the GitHub repository. Vercel is configured to understand the monorepo structure, building and deploying the frontend and backend together.
-*   **Data Persistence**: Be aware of the data persistence issue on the live Vercel deployment. Any features requiring long-term data storage will first require migrating the backend to use a persistent database.
-*   **Updating Documentation**: If you make any user-facing changes, update the `INSTRUCTIONS.md` file. If you make significant architectural changes (like adding a persistent database), update this `AGENTS.md` file.
+*   **Deployment**: The application is deployed automatically by Vercel when changes are pushed to the GitHub repository.
+*   **Configuration**: The backend configuration is stored in `backend/.env`. This file has been created and is ready for use.
+*   **Data Persistence**: Be aware of the data persistence issue on the live Vercel deployment. The SQLite database will be wiped periodically. This must be addressed before the app can be used for real, persistent journaling.
+*   **Updating Documentation**: If you make any user-facing changes, update the `INSTRUCTIONS.md` file. If you make significant architectural changes, update this `AGENTS.md` file.
 
 ### What to Watch Out For
 
 *   **Monorepo Structure**: When adding dependencies, be sure to add them to the correct workspace (`frontend` or `backend`).
-*   **Ephemeral Filesystem on Vercel**: This is the biggest limitation of the current deployment. The SQLite database will be wiped periodically. This must be addressed before the app can be used for real, persistent journaling.
+*   **Ephemeral Filesystem on Vercel**: This is the biggest limitation of the current deployment. This must be addressed before the app can be used for real journaling.
 *   **Privacy**: The app is designed to be privacy-first. If a cloud backend is implemented, it should be designed with end-to-end encryption to maintain this core principle.
